@@ -5,21 +5,21 @@
     "type": "module",
     "dependencies": {
         "@j-cake/jcake-utils": "latest",
-        "chalk": "latest"
+        "chalk": "latest",
+        "react": "latest",
+        "react-dom": "latest",
+        "lucide": "latest",
+        "lucide-react": "latest"
     },
     "scripts": {
-	"build:plugin": "esbuild src/main.ts --outdir=build --bundle --sourcemap --platform=node --format=cjs --external:obsidian --external:electron",
-	"build:package.json": "cat package.json | jq -r '. *  .deploy * {deploy:null} | with_entries(select(.value |. != null))' > build/package.json",
-	"build:manifest.json": "cat manifest.json | jq -r '.' > build/manifest.json",
-	"build:styles.css": "esbuild styles.css --outdir=build --bundle",
-        "phony:mkjson": "mkjson build/\\* install",
-	"phony:install": "cp -r $PWD/build \"$vault_dir/.obsidian/plugins/$(cat package.json | jq -r '.name')\"",
-	"phony:clean": "rm -rf build target node_modules *lock* *yarn* *pnpm*",
-	"build": "cat package.json | jq -r '.scripts | keys_unsorted[] | select(. | startswith(\"build:\"))' | xargs -d \\\\n -I {} $npm_execpath run {}"
+        "build": "build phony:all phony:install"
     },
     "devDependencies": {
         "@types/node": "latest",
+        "@types/react": "latest",
+        "@types/react-dom": "latest",
         "@j-cake/mkjson": "latest",
+        "builder": "link:../../builder",
         "electron": "latest",
         "typescript": "latest",
         "esbuild": "latest",

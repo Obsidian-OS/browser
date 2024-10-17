@@ -11,9 +11,10 @@
         "allowSyntheticDefaultImports": true,
         "allowJs": true,
         "resolveJsonModule": true,
+        "jsx": "react",
         "forceConsistentCasingInFileNames": true,
         "importHelpers": true,
-        "strict": true,
+        "strict": true
     },
     "exclude": [
         "build"

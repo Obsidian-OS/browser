@@ -2,10 +2,34 @@
     padding: 0 !important;
     overflow: hidden !important;
 }
+
 .browser-tab-container {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+
+    grid-template-areas: "viewport" "viewport";
+}
+
+.webview-viewport {
+    display: grid;
+
+    grid-area: viewport;
+
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
+
+    grid-template-areas:
+        "address"
+        "webview";
+}
+
+.webview-viewport webview {
+    grid-area: webview;
+    width: 100%;
+    height: 100%;
+    flex: 1;
 }
 
 .browser-navigation {
@@ -23,37 +47,44 @@
     
     transition: opacity 0.2s;
 
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: 1fr;
+    display: flex;
+    align-items: stretch;
 
-    grid-template-areas: 'url-bar';
+    gap: var(--size-4-2);
+    padding: var(--size-4-2);
 }
 
-.url-bar input {
-    grid-area: url-bar;
-    color: inherit !important;
+.url-bar .url-container {
+    flex: 1;
+    display: grid;
 
-    opacity: 0;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+
+    grid-template-areas: "address";
+}
+
+.url-bar .pretty-container, .url-bar .edit {
+    grid-area: address;
 }
 
 .url-bar .pretty-container {
-    grid-area: url-bar;
-    pointer-events: none;
     opacity: 1;
+    flex: 1;
     display: flex;
     align-items: center;
     font: inherit;
     font-size: var(--font-ui-small);
-    padding: 0 36px;
     color: var(--text-faint);
     flex-wrap: nowrap;
     overflow: hidden;
     max-width: 100%;
+    z-index: 4;
 }
 
-.url-bar:is(:active, :focus, :focus-within) input { opacity: 1; }
-.url-bar:is(:active, :focus, :focus-within) .pretty-container { opacity: 0; }
+.url-bar .hidden {
+    display: none;
+}
 
 .pretty-container > * {
     white-space: nowrap;
@@ -88,9 +119,14 @@
     padding: 0 4px;
 }
 
+.favicon-container {
+    display: flex;
+    align-content: center;
+}
+
 .favicon {
     max-width: 16px;
     max-height: 16px;
-    margin: 0 0.3em;
+    /*margin: 0 0.3em;*/
     color: var(--text-normal);
 }
