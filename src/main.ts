@@ -1,7 +1,10 @@
+import React from "react";
 import * as obs from 'obsidian';
 
 import Browser, {BROWSER_VIEW} from "./viewport.js";
 import SettingsTab, { default_settings, Settings } from "./settings/settingsTab.js";
+
+const AppContext = React.createContext<obs.App | null>(null);
 
 export default class BrowserPlugin extends obs.Plugin {
     settingsTab: SettingsTab | null = null;

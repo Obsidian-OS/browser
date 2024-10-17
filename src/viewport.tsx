@@ -10,6 +10,8 @@ export const BROWSER_VIEW = "browser-view";
 
 lucide.createIcons({icons: lucide.icons});
 
+export const AppContext = React.createContext<obs.App | null>(null);
+
 interface BrowserState extends Record<string, any> {
     url: string,
     title: string,
@@ -75,7 +77,9 @@ export default class Browser extends obs.View {
         this.containerEl.empty();
 
         (this.root = rdom.createRoot(this.containerEl))
-            .render(<Ui browser={this} settings={this.plugin.settings}/>);
+            .render(<AppContext.Provider value={this.app}>
+                <Ui browser={this} settings={this.plugin.settings}/>
+            </AppContext.Provider>);
     }
 
     protected async onClose(): Promise<void> {

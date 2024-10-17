@@ -9,7 +9,8 @@
         "react": "latest",
         "react-dom": "latest",
         "lucide": "latest",
-        "lucide-react": "latest"
+        "lucide-react": "latest",
+        "@mozilla/readability": "latest"
     },
     "scripts": {
         "build": "build phony:all phony:install"
