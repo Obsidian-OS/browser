@@ -1,6 +1,7 @@
 {
     "name": "browser",
     "main": "./build/index.js",
+    "build": "./build.js",
     "version": "0.1.0",
     "type": "module",
     "dependencies": {
@@ -19,11 +20,9 @@
         "@types/node": "latest",
         "@types/react": "latest",
         "@types/react-dom": "latest",
-        "@j-cake/mkjson": "latest",
         "builder": "link:../../builder",
         "electron": "latest",
         "typescript": "latest",
-        "esbuild": "latest",
 		"obsidian": "latest"
     },
     "imports": {
