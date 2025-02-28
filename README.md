@@ -1,3 +1,7 @@
+> **Note** It seems the Obsidian team beat me to the punch. Their browser is far better and far more feature-complete than the time I had invested in this one.
+> 
+> Actually, all things considered, it's probably for the best that their browser is implemented natively. It can do everything I wanted to with mine...
+
 # Browser Plugin
 
 This plugin produces a very simplistic, yet integrated browser into Obsidian. It features most of the UI features found in mainstream browsers. 
